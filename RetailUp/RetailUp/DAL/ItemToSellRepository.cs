@@ -1,4 +1,5 @@
-﻿using RetailUp.Models;
+﻿using Dapper;
+using RetailUp.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -25,6 +26,10 @@ namespace RetailUp.DAL
 													[ItemRemained],
 													[ItemLeft]
 													FROM [dbo].[ItemToSell]";
+		private const string FILTER = @"Select 
+													{0}
+													FROM [dbo].[ItemToSell]
+												{1} {2}";
 		private const string INSERT = @"INSERT INTO ItemToSell (
 													[ItemName], 
 													[ItemBrand],
@@ -78,6 +83,8 @@ namespace RetailUp.DAL
 										FROM ItemToSell
 										WHERE ID = @ItemToSellId";
 
+
+
 		/// <summary>
 		/// noo need for this so far
 		/// </summary>
@@ -86,11 +93,11 @@ namespace RetailUp.DAL
 		//											where categoryid = @ID";
 
 
-		private readonly string ConnStr;
+		private readonly string _ConnStr;
 
 		public ItemToSellRepository(string connStr)
 		{
-			ConnStr = connStr;
+			_ConnStr = connStr;
 		}
 	 
 
@@ -98,7 +105,7 @@ namespace RetailUp.DAL
 		{
 			var list = new List<ItemToSell>();
 
-			using (var conn = new SqlConnection(ConnStr))
+			using (var conn = new SqlConnection(_ConnStr))
 			{
 				using (var cmd = conn.CreateCommand())
 				{
@@ -130,7 +137,7 @@ namespace RetailUp.DAL
 		{
 			ItemToSell itemToSell = new ItemToSell();
 
-			using(var conn = new SqlConnection(ConnStr))
+			using(var conn = new SqlConnection(_ConnStr))
 			{
 				using(var cmd = conn.CreateCommand())
 				{
@@ -155,7 +162,7 @@ namespace RetailUp.DAL
 
 		public void Insert(ItemToSell itm) //itm = itemtosell
 		{
-			using(var conn = new SqlConnection(ConnStr))
+			using(var conn = new SqlConnection(_ConnStr))
 			{
 				using (var cmd = conn.CreateCommand())
 				{
@@ -189,7 +196,7 @@ namespace RetailUp.DAL
 
 		public void Update(ItemToSell itemToSell)
 		{
-			using (var conn = new SqlConnection(ConnStr))
+			using (var conn = new SqlConnection(_ConnStr))
 			{
 				using(var cmd = conn.CreateCommand())
 				{
@@ -218,7 +225,7 @@ namespace RetailUp.DAL
 
 		public void Delete(int id)
 		{
-			using (var conn = new SqlConnection(ConnStr))
+			using (var conn = new SqlConnection(_ConnStr))
 			{
 
 
@@ -266,15 +273,94 @@ namespace RetailUp.DAL
 				? (int?)null
 				: rdr.GetInt32(rdr.GetOrdinal("ItemCategoryID"));
 
-			item.ItemRemained = (int)(rdr.IsDBNull(rdr.GetOrdinal("ItemRemained"))
+			item.ItemRemained = (rdr.IsDBNull(rdr.GetOrdinal("ItemRemained"))
 				? (int?)null
 				: rdr.GetInt32(rdr.GetOrdinal("ItemRemained")));
 
-			item.ItemLeft = (int)(rdr.IsDBNull(rdr.GetOrdinal("ItemLeft"))
+			item.ItemLeft = (rdr.IsDBNull(rdr.GetOrdinal("ItemLeft"))
 				? (int?)null
 				: rdr.GetInt32(rdr.GetOrdinal("ItemLeft")));
 
 			return item;
+		}
+
+		public List<ItemToSell> Filter(string itemName, string itemBrand, string itemModel,
+			int? itemCategoryId, DateTime? itemAddedDate, out int totalCount, int? page = 1, int pageSize = 3)
+		{
+			var list = new List<ItemToSell>();
+
+			using(var conn = new SqlConnection(_ConnStr))
+			{
+
+				#region Filtration
+				var parameters = new DynamicParameters();
+				string sqlFilter = "";
+
+				if (!string.IsNullOrWhiteSpace(itemName))
+				{
+					sqlFilter += " ItemName like @ItemName + '%' AND";
+					parameters.Add("@ItemName", itemName);
+				}
+				if (!string.IsNullOrWhiteSpace(itemBrand))
+				{
+					sqlFilter += " ItemBrand like @ItemBrand + '%' AND";
+					parameters.Add("@ItemBrand", itemBrand);
+				}
+				if (!string.IsNullOrWhiteSpace(itemModel))
+				{
+					sqlFilter += " ItemModel like @ItemModel + '%' AND";
+					parameters.Add("@ItemModel", itemModel);
+				}
+				if (itemCategoryId.HasValue)
+				{
+					sqlFilter += " ItemCategoryID >= @ItemCategoryID AND";
+					parameters.Add("@ItemCategoryID", itemCategoryId);
+				}
+				if (itemAddedDate.HasValue)
+				{
+					sqlFilter += " ItemAddedDate >= @ItemAddedDate AND";
+					parameters.Add("@ItemAddedDate", itemAddedDate);
+				}
+
+				if (sqlFilter.Length > 0)
+				{
+					sqlFilter = " WHERE " 
+						+ sqlFilter.Substring(0, sqlFilter.Length - 3);
+				}
+
+				#endregion
+
+				#region Pagination
+				if (!page.HasValue || page <= 0)
+					page = 1;
+
+				totalCount = conn.ExecuteScalar<int>(string.Format(FILTER, " count(*) ", sqlFilter, ""), parameters);
+
+
+				string sqlPaging = " Order by ItemName offset @Rows rows fetch next @PageSize rows only ";
+				parameters.Add("@Rows", (page - 1) * pageSize);
+				parameters.Add("@PageSize", pageSize);
+				#endregion Pagination
+
+				string selectFields = @"[ID],
+										[ItemName],
+										[ItemBrand],
+										[ItemDescription],
+										[ItemModel],
+										[ItemAddedDate],
+										[ItemImage],
+										[IsActive],
+										[ItemCategoryID],
+										[ItemRemained],
+										[ItemLeft] ";
+
+				string sql = string.Format(FILTER, selectFields, sqlFilter, sqlPaging);			
+
+				list = conn.Query<ItemToSell>(sql, parameters).AsList();
+				
+			}
+
+			return list;
 		}
 	}
 }

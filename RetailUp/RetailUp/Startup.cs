@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
@@ -14,6 +15,9 @@ namespace RetailUp
 {
     public class Startup
     {
+        private const string DataDirectory = "|DataDirectory|";
+        private string _appPath;
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -24,7 +28,12 @@ namespace RetailUp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IItemToSellRepository>(x => new ItemToSellRepository(Configuration["ConnectionStrings:RetailUpDbConnStr"]));
+            services.AddScoped<IItemToSellRepository>(
+                x => new ItemToSellRepository(
+                    Configuration.GetConnectionString("RetailUPDbConnStr")
+                    .Replace(DataDirectory, _appPath)
+                    )
+                );
 
             services.AddControllersWithViews();
         }
@@ -32,6 +41,8 @@ namespace RetailUp
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            _appPath = Path.Combine(env.ContentRootPath, "App_Data");
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

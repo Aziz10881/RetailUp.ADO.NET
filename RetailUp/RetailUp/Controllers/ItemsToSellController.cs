@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RetailUp.DAL;
 using RetailUp.Models;
+using X.PagedList;
 
 namespace RetailUp.Controllers
 {
@@ -25,6 +26,27 @@ namespace RetailUp.Controllers
 
             return View(listItem);
         }
+
+
+
+        public ActionResult Filter(int page, ItemToSellFilterViewModel model)
+        {
+            int totalCount;
+            var list = ItemRep.Filter(model.ItemName, model.ItemBrand, model.ItemModel, 
+                model.ItemCategoryId, model.ItemAddedDate, out totalCount, page, 2);
+
+
+            if(page <= 0)
+            {
+                page = 1;
+            }
+
+            //model.ItemToSells = list;
+            model.ItemToSellsPaged = new StaticPagedList<ItemToSell>(list, page, 2, totalCount);
+
+                return View(model);
+        }
+
 
         // GET: ItemsToSellController/Details/5
         public ActionResult Details(int id) 

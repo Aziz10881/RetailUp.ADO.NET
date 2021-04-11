@@ -20,9 +20,13 @@ namespace RetailUp.Models
         public string ItemDescription { get; set; }
         [DisplayName("Model")]
         public string ItemModel { get; set; }
+
+
         [Required]
         [DisplayName("Added Date")]
+        [DataType(DataType.Date)]
         public DateTime? ItemAddedDate { get; set; }
+
         [DisplayName("Image")]
         public string ItemImage { get; set; }
         public bool IsActive { get; set; }

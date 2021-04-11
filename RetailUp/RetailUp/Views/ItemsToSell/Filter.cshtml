@@ -1,0 +1,153 @@
+﻿@model RetailUp.Models.ItemToSellFilterViewModel
+@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+
+@{
+    ViewData["Title"] = "Filter";
+}
+
+<h1>Filter</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Filter">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ItemName" class="control-label"></label>
+                <input asp-for="ItemName" class="form-control" />
+                <span asp-validation-for="ItemName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ItemBrand" class="control-label"></label>
+                <input asp-for="ItemBrand" class="form-control" />
+                <span asp-validation-for="ItemBrand" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ItemModel" class="control-label"></label>
+                <input asp-for="ItemModel" class="form-control" />
+                <span asp-validation-for="ItemModel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ItemCategoryId" class="control-label"></label>
+                <input asp-for="ItemCategoryId" class="form-control" />
+                <span asp-validation-for="ItemCategoryId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ItemAddedDate" class="control-label"></label>
+                <input asp-for="ItemAddedDate" class="form-control" />
+                <span asp-validation-for="ItemAddedDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Filter" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemToSellsPaged.First().ItemToSellId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemToSellsPaged.First().ItemName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemToSellsPaged.First().ItemBrand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemToSellsPaged.First().ItemDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemToSellsPaged.First().ItemModel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemToSellsPaged.First().ItemAddedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemToSellsPaged.First().ItemImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemToSellsPaged.First().IsActive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemToSellsPaged.First().ItemCategoryId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemToSellsPaged.First().ItemRemained)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemToSellsPaged.First().ItemLeft)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ItemToSellsPaged)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemToSellId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemBrand)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemModel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemAddedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemImage)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsActive)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemCategoryId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemRemained)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemLeft)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ItemToSellId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ItemToSellId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ItemToSellId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<div>
+
+    @Html.PagedListPager(
+        Model.ItemToSellsPaged,
+        page => Url.Action(
+                            "Filter",
+                            new { page, itemname = Model.ItemName, email = Model.ItemBrand, birthdate = Model.ItemModel, itemcategoryid = Model.ItemCategoryId, itemaddeddate = Model.ItemAddedDate }
+                          )
+        )
+</div>
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
