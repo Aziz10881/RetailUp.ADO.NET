@@ -45,6 +45,45 @@
     </div>
 </div>
 
+<hr />
+@Html.ActionLink("Export to JSON",
+    "ExportJson",
+    new
+    {
+        itemName = Model.ItemName,
+        itemBrand = Model.ItemBrand,
+        itemModel = Model.ItemModel,
+        itemCategoryId = Model.ItemCategoryId,
+        itemAddedDate = Model.ItemAddedDate,
+    }
+   )
+|
+@Html.ActionLink("Export to XML",
+    "ExportXML",
+    new
+    {
+        itemName = Model.ItemName,
+        itemBrand = Model.ItemBrand,
+        itemModel = Model.ItemModel,
+        itemCategoryId = Model.ItemCategoryId,
+        itemAddedDate = Model.ItemAddedDate,
+    }
+   )
+|
+@Html.ActionLink("Export to CSV",
+    "ExportCSV",
+    new
+    {
+        itemName = Model.ItemName,
+        itemBrand = Model.ItemBrand,
+        itemModel = Model.ItemModel,
+        itemCategoryId = Model.ItemCategoryId,
+        itemAddedDate = Model.ItemAddedDate,
+    }
+   )
+<hr />
+
+
 <table class="table">
     <thead>
         <tr>
@@ -107,7 +146,7 @@
                     @Html.DisplayFor(modelItem => item.ItemAddedDate)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ItemImage)
+                    <img src="@Html.DisplayFor(modelItem => item.ItemImage)" alt="item image" style="width:150px;" />
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.IsActive)

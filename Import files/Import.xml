@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfItemToSell xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ItemToSell>
+    <ItemToSellId xsi:nil="true" />
+    <ItemName>controller</ItemName>
+    <ItemBrand>Sony</ItemBrand>
+    <ItemDescription>for PS</ItemDescription>
+    <ItemModel>PS5</ItemModel>
+    <ItemAddedDate>2020-12-08T00:00:00</ItemAddedDate>
+    <ItemImage>https://apollo-olx.cdnvideo.ru:443/v1/files/76h6gq1g9887-UZ/image;s=1000x563</ItemImage>
+    <IsActive>true</IsActive>
+    <ItemCategoryId>1</ItemCategoryId>
+    <ItemRemained>15</ItemRemained>
+    <ItemLeft>15</ItemLeft>
+  </ItemToSell>
+  <ItemToSell>
+    <ItemToSellId xsi:nil="true" />
+    <ItemName>Keyboard</ItemName>
+    <ItemBrand>Apple</ItemBrand>
+    <ItemDescription>for Macbook</ItemDescription>
+    <ItemAddedDate>2021-03-19T00:00:00</ItemAddedDate>
+    <ItemImage>https://apollo-olx.cdnvideo.ru:443/v1/files/h5gxizc3tqc11-UZ/image;s=644x461</ItemImage>
+    <IsActive>false</IsActive>
+    <ItemCategoryId>1</ItemCategoryId>
+    <ItemRemained>12</ItemRemained>
+    <ItemLeft>12</ItemLeft>
+  </ItemToSell>
+  <ItemToSell>
+    <ItemToSellId xsi:nil="true" />
+    <ItemName>Mouse</ItemName>
+    <ItemBrand>Razor</ItemBrand>
+    <ItemDescription>gaming</ItemDescription>
+    <ItemModel>xyz0015</ItemModel>
+    <ItemAddedDate>2021-03-11T00:00:00</ItemAddedDate>
+    <ItemImage>https://apollo-olx.cdnvideo.ru:443/v1/files/dj0j9ruqwz141-UZ/image;s=644x461</ItemImage>
+    <IsActive>false</IsActive>
+    <ItemCategoryId xsi:nil="true" />
+    <ItemRemained>14</ItemRemained>
+    <ItemLeft>14</ItemLeft>
+  </ItemToSell>
+  <ItemToSell>
+    <ItemToSellId xsi:nil="true" />
+    <ItemName>PS5</ItemName>
+    <ItemBrand>Sony</ItemBrand>
+    <ItemDescription>Playstation 5 for gaming</ItemDescription>
+    <ItemModel>PS5</ItemModel>
+    <ItemAddedDate>2020-12-08T00:00:00</ItemAddedDate>
+    <ItemImage>https://apollo-olx.cdnvideo.ru:443/v1/files/3uz7kv7qp6hi-UZ/image;s=644x461</ItemImage>
+    <IsActive>true</IsActive>
+    <ItemCategoryId>1</ItemCategoryId>
+    <ItemRemained>1</ItemRemained>
+    <ItemLeft>1</ItemLeft>
+  </ItemToSell>
+</ArrayOfItemToSell>

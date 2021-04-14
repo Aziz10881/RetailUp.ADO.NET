@@ -1,0 +1,113 @@
+﻿@model IEnumerable<RetailUp.Models.ItemToSell>
+
+@{
+    ViewData["Title"] = "ImportCsv";
+}
+
+<h1>Import Csv</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="ImportCsv" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label for="importFile" class="control-label"></label>
+                <input name="importFile" class="form-control" type="file" />
+
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Import" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@if(Model != null) 
+{ 
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemToSellId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemBrand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemModel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemAddedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemCategoryId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemRemained)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemLeft)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemToSellId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemBrand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemModel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemAddedDate)
+            </td>
+            <td>
+                <img src="@Html.DisplayFor(modelItem => item.ItemImage)" alt="item image" style="width:150px;" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemCategoryId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemRemained)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemLeft)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+}

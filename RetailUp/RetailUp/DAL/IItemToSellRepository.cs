@@ -10,8 +10,15 @@ namespace RetailUp.DAL
     {
         public List<ItemToSell> GetItemsToSell();
 
-        List<ItemToSell> Filter(string itemName, string itemBrand, string itemModel, int? itemCategoryId, 
-            DateTime? itemAddedDate, out int totalCount, int? page, int pageSize = 3);
+        List<ItemToSell> Filter(
+            string itemName, 
+            string itemBrand,
+            string itemModel, 
+            int? itemCategoryId, 
+            DateTime? itemAddedDate, 
+            out int totalCount,
+            int? page = 1,
+            int pageSize = 3);
 
         void Insert(ItemToSell itm);
 
@@ -21,6 +28,6 @@ namespace RetailUp.DAL
 
         void Delete(int id);
 
-        
+       // List<ItemToSell> FilterUDSP(string itemName, string category, DateTime? kjjh);
     }
 }

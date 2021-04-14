@@ -125,7 +125,11 @@ C:\Users\Admin\Documents\GitHub\RetailUp.ADO.NET\RetailUp\RetailUp\bin\Debug\net
 C:\Users\Admin\Documents\GitHub\RetailUp.ADO.NET\RetailUp\RetailUp\bin\Debug\netcoreapp3.1\X.PagedList.dll
 C:\Users\Admin\Documents\GitHub\RetailUp.ADO.NET\RetailUp\RetailUp\bin\Debug\netcoreapp3.1\X.PagedList.Mvc.Core.dll
 C:\Users\Admin\Documents\GitHub\RetailUp.ADO.NET\RetailUp\RetailUp\bin\Debug\netcoreapp3.1\X.PagedList.Web.Common.dll
+C:\Users\Admin\Documents\GitHub\RetailUp.ADO.NET\RetailUp\RetailUp\obj\Debug\netcoreapp3.1\Razor\Views\ItemsToSell\Filter.cshtml.g.cs
+C:\Users\Admin\Documents\GitHub\RetailUp.ADO.NET\RetailUp\RetailUp\bin\Debug\netcoreapp3.1\CsvHelper.dll
 C:\Users\Admin\Documents\GitHub\RetailUp.ADO.NET\RetailUp\RetailUp\obj\Debug\netcoreapp3.1\RetailUp.csproj.CoreCompileInputs.cache
 C:\Users\Admin\Documents\GitHub\RetailUp.ADO.NET\RetailUp\RetailUp\obj\Debug\netcoreapp3.1\RetailUp.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Admin\Documents\GitHub\RetailUp.ADO.NET\RetailUp\RetailUp\obj\Debug\netcoreapp3.1\RetailUp.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Admin\Documents\GitHub\RetailUp.ADO.NET\RetailUp\RetailUp\obj\Debug\netcoreapp3.1\Razor\Views\ItemsToSell\Filter.cshtml.g.cs
+C:\Users\Admin\Documents\GitHub\RetailUp.ADO.NET\RetailUp\RetailUp\obj\Debug\netcoreapp3.1\Razor\Views\ItemsToSell\ImportJson.cshtml.g.cs
+C:\Users\Admin\Documents\GitHub\RetailUp.ADO.NET\RetailUp\RetailUp\obj\Debug\netcoreapp3.1\Razor\Views\ItemsToSell\ImportCsv.cshtml.g.cs
+C:\Users\Admin\Documents\GitHub\RetailUp.ADO.NET\RetailUp\RetailUp\obj\Debug\netcoreapp3.1\Razor\Views\ItemsToSell\ImportXml.cshtml.g.cs

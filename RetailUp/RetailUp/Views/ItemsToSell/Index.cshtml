@@ -48,6 +48,7 @@
             <th></th>
         </tr>
     </thead>
+
     <tbody>
 @foreach (var item in Model) {
         <tr>
@@ -70,7 +71,7 @@
                 @Html.DisplayFor(modelItem => item.ItemAddedDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ItemImage)
+              <img src="@Html.DisplayFor(modelItem => item.ItemImage)" alt="item image" style="width:150px;" />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IsActive)

@@ -19,6 +19,6 @@ namespace RetailUp.Models
 
         public List<ItemToSell> ItemToSells { get; set; }
 
-        public IPagedList<ItemToSell> ItemToSellsPaged { get; set; }
+        public IPagedList<ItemToSell> ItemToSellsPaged;
     }
 }

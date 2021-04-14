@@ -31,6 +31,7 @@ BEGIN
       ,[ItemImage]
       ,[IsActive]
       ,[ItemRemained]
+      ,[ItemLeft]
       ,[Operation],
 	   [CreatedOn])
 	  select 
@@ -44,6 +45,7 @@ BEGIN
       ,[ItemImage]
       ,[IsActive]
       ,[ItemRemained]
+      ,[ItemLeft]
 	  ,'inserted'
 	  ,GetDate()
   FROM [RetailUP].[dbo].[ItemToSell] where ID = @itemId
@@ -79,6 +81,7 @@ begin
       ,[ItemImage]
       ,[IsActive]
       ,[ItemRemained]
+      ,[ItemLeft]
       ,[Operation],
 	   [CreatedOn])
 	   select 
@@ -92,6 +95,7 @@ begin
       ,[ItemImage]
       ,[IsActive]
       ,[ItemRemained]
+      ,[ItemLeft]
 	  ,'update'
 	  ,GetDate()
 	  from deleted
@@ -107,6 +111,7 @@ begin
       ,[ItemImage]
       ,[IsActive]
       ,[ItemRemained]
+      ,[ItemLeft]
       ,[Operation],
 	   [CreatedOn])
 	   select 
@@ -120,6 +125,7 @@ begin
       ,[ItemImage]
       ,[IsActive]
       ,[ItemRemained]
+      ,[ItemLeft]
 	  ,'deleted'
 	  ,GetDate()
 	  from DELETED

@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "TOLfnzF4xqaCftv+NFWgxvgKZC2xwdtONvjEDL1U7lT6ladLUa4td2q0ms3WIzx7lqc9Tgv6yCE0CL/hLf65YA==",
+  "dgSpecHash": "rZAPMH2GfKwDNON4BoiIgCy+Hdsc0G53IWLFG4o0F+Yu1481zWfV8briwKL8NPnYvbM7oLUB5vCDZ9R/afFOKg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Admin\\Documents\\GitHub\\RetailUp.ADO.NET\\RetailUp\\RetailUp\\RetailUp.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Admin\\.nuget\\packages\\csvhelper\\26.1.0\\csvhelper.26.1.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\dapper\\2.0.78\\dapper.2.0.78.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.antiforgery\\2.2.0\\microsoft.aspnetcore.antiforgery.2.2.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",

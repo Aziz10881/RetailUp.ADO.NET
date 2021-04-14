@@ -1,0 +1,5 @@
+ItemToSellId,ItemName,ItemBrand,ItemDescription,ItemModel,ItemAddedDate,ItemImage,IsActive,ItemCategoryId,ItemRemained,ItemLeft
+,controller,Sony,for PS,PS5,12/08/2020 00:00:00,https://apollo-olx.cdnvideo.ru:443/v1/files/76h6gq1g9887-UZ/image;s=1000x563,True,1,15,15
+,Keyboard,Apple,for Macbook,,03/19/2021 00:00:00,https://apollo-olx.cdnvideo.ru:443/v1/files/h5gxizc3tqc11-UZ/image;s=644x461,False,1,12,12
+,Mouse,Razor,gaming,xyz0015,03/11/2021 00:00:00,https://apollo-olx.cdnvideo.ru:443/v1/files/dj0j9ruqwz141-UZ/image;s=644x461,False,,14,14
+,PS5,Sony,Playstation 5 for gaming,PS5,12/08/2020 00:00:00,https://apollo-olx.cdnvideo.ru:443/v1/files/3uz7kv7qp6hi-UZ/image;s=644x461,True,1,1,1

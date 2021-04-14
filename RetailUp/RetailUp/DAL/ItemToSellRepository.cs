@@ -166,7 +166,8 @@ namespace RetailUp.DAL
 			{
 				using (var cmd = conn.CreateCommand())
 				{
-					cmd.CommandText = INSERT;
+					cmd.CommandText = "udspCreateNewItemToSell";
+					cmd.CommandType = CommandType.StoredProcedure;
 
 					//how it is done in anywhere
 					var pItemName = cmd.CreateParameter();
@@ -200,7 +201,8 @@ namespace RetailUp.DAL
 			{
 				using(var cmd = conn.CreateCommand())
 				{
-					cmd.CommandText = UPDATE;
+					cmd.CommandText = "udspUpdateItemToSellBYID";
+					cmd.CommandType = CommandType.StoredProcedure;
 
 					cmd.Parameters.AddWithValue("@ID", itemToSell.ItemToSellId);
 					cmd.Parameters.AddWithValue("@ItemName", itemToSell.ItemName);                
@@ -231,9 +233,10 @@ namespace RetailUp.DAL
 
 				using (var cmd = conn.CreateCommand())
 				{
-					cmd.CommandText = DELETE;
+					cmd.CommandText = "udspDeleteItemToSellByID";
+					cmd.CommandType = CommandType.StoredProcedure;
 
-					cmd.Parameters.Add("@ItemToSellId", SqlDbType.Int).Value = id;
+					cmd.Parameters.Add("@ID", SqlDbType.Int).Value = id;
 
 					conn.Open();
 					cmd.ExecuteNonQuery();
@@ -330,6 +333,8 @@ namespace RetailUp.DAL
 
 				#endregion
 
+
+
 				#region Pagination
 				if (!page.HasValue || page <= 0)
 					page = 1;
@@ -362,5 +367,6 @@ namespace RetailUp.DAL
 
 			return list;
 		}
+
 	}
 }
